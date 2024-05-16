@@ -1,6 +1,6 @@
 
 # Movie App
-Movie app made in Flutter with clean architecture using BLoC, Hive and the movie db API.
+Movie app made in Flutter with clean architecture using BLoC and the open weather API.
 
 ## Features
 - Current Location
@@ -11,7 +11,7 @@ Movie app made in Flutter with clean architecture using BLoC, Hive and the movie
 
 ## Screenshots
 <p>
-  <img src="https://github.com/hammadxo2/weather_app/blob/main/screenshots/1.png" width="250" />
+  <img src="https://github.com/hammadxo2/weather_app/main/screenshots/1.png" width="250" />
 
 </p>
 
