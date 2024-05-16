@@ -1,16 +1,36 @@
-# weather_app
 
-A new Flutter project.
+# Movie App
+Movie app made in Flutter with clean architecture using BLoC, Hive and the movie db API.
 
-## Getting Started
+## Features
+- Current Location
+- Sunrise and Sunsit Time
+- Max and Min Tempreture
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Screenshots
+<p>
+  <img src="https://github.com/hammadxo2/weather_app/blob/main/screenshots/1.png" width="250" />
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+</p>
+
+## Installation
+### 1. Clone the repo
+```bash
+git clone https://github.com/hammadxo2/weather_app.git
+cd flutter-weather-app
+```
+### 2. Run pub get
+```bash
+flutter pub get
+```
+### 3. Add your API key into my_data file
+```bash
+apiKey = 'YOUR_API_KEY';
+```
+### 4. Run the app
+```bash 
+flutter run
+```
+
