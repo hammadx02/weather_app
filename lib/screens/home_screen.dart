@@ -13,43 +13,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-Widget getWeatherIcon(int code) {
-		switch (code) {
-		  case >= 200 && < 300 :
-		    return Image.asset(
-					'assets/1.png'
-				);
-			case >= 300 && < 400 :
-		    return Image.asset(
-					'assets/2.png'
-				);
-			case >= 500 && < 600 :
-		    return Image.asset(
-					'assets/3.png'
-				);
-			case >= 600 && < 700 :
-		    return Image.asset(
-					'assets/4.png'
-				);
-			case >= 700 && < 800 :
-		    return Image.asset(
-					'assets/5.png'
-				);
-			case == 800 :
-		    return Image.asset(
-					'assets/6.png'
-				);
-			case > 800 && <= 804 :
-		    return Image.asset(
-					'assets/7.png'
-				);
-		  default:
-			return Image.asset(
-				'assets/7.png'
-			);
-		}
-	}
+  Widget getWeatherIcon(int code) {
+    switch (code) {
+      case >= 200 && < 300:
+        return Image.asset('assets/1.png');
+      case >= 300 && < 400:
+        return Image.asset('assets/2.png');
+      case >= 500 && < 600:
+        return Image.asset('assets/3.png');
+      case >= 600 && < 700:
+        return Image.asset('assets/4.png');
+      case >= 700 && < 800:
+        return Image.asset('assets/5.png');
+      case == 800:
+        return Image.asset('assets/6.png');
+      case > 800 && <= 804:
+        return Image.asset('assets/7.png');
+      default:
+        return Image.asset('assets/7.png');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +105,7 @@ Widget getWeatherIcon(int code) {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                           Text(
+                          Text(
                             '📍 ${state.weather.areaName}',
                             style: const TextStyle(
                               color: Colors.white,
@@ -141,7 +124,7 @@ Widget getWeatherIcon(int code) {
                             ),
                           ),
                           getWeatherIcon(state.weather.weatherConditionCode!),
-                           Center(
+                          Center(
                             child: Text(
                               '${state.weather.temperature!.celsius!.round()}°C',
                               style: const TextStyle(
@@ -151,7 +134,7 @@ Widget getWeatherIcon(int code) {
                               ),
                             ),
                           ),
-                           Center(
+                          Center(
                             child: Text(
                               state.weather.weatherMain!.toUpperCase(),
                               style: const TextStyle(
@@ -164,9 +147,11 @@ Widget getWeatherIcon(int code) {
                           const SizedBox(
                             height: 5,
                           ),
-                           Center(
+                          Center(
                             child: Text(
-                              DateFormat('EEEE dd •').add_jm().format(state.weather.date!),
+                              DateFormat('EEEE dd •')
+                                  .add_jm()
+                                  .format(state.weather.date!),
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w300,
@@ -189,7 +174,7 @@ Widget getWeatherIcon(int code) {
                                   const SizedBox(
                                     width: 5,
                                   ),
-                                   Column(
+                                  Column(
                                     children: [
                                       const Text(
                                         'Sunrise',
@@ -202,7 +187,9 @@ Widget getWeatherIcon(int code) {
                                         height: 3,
                                       ),
                                       Text(
-                                        DateFormat().add_jm().format(state.weather.sunrise!),
+                                        DateFormat()
+                                            .add_jm()
+                                            .format(state.weather.sunrise!),
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.w700,
@@ -221,7 +208,7 @@ Widget getWeatherIcon(int code) {
                                   const SizedBox(
                                     width: 5,
                                   ),
-                                   Column(
+                                  Column(
                                     children: [
                                       const Text(
                                         'Sunset',
@@ -234,7 +221,9 @@ Widget getWeatherIcon(int code) {
                                         height: 3,
                                       ),
                                       Text(
-                                         DateFormat().add_jm().format(state.weather.sunset!),
+                                        DateFormat()
+                                            .add_jm()
+                                            .format(state.weather.sunset!),
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.w700,
@@ -252,7 +241,8 @@ Widget getWeatherIcon(int code) {
                               color: Colors.grey,
                             ),
                           ),
-                          Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
                                 children: [
@@ -263,13 +253,11 @@ Widget getWeatherIcon(int code) {
                                   const SizedBox(
                                     width: 5,
                                   ),
-                                   Column(
+                                  Column(
                                     children: [
                                       const Text(
                                         'Temp Max',
-                                        
                                         style: TextStyle(
-                                          
                                           color: Colors.white,
                                           fontWeight: FontWeight.w300,
                                         ),
@@ -278,7 +266,7 @@ Widget getWeatherIcon(int code) {
                                         height: 3,
                                       ),
                                       Text(
-                                         '${state.weather.tempMax!.celsius!.round()}°C',
+                                        '${state.weather.tempMax!.celsius!.round()}°C',
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.w700,
@@ -287,41 +275,41 @@ Widget getWeatherIcon(int code) {
                                     ],
                                   ),
                                 ],
-                              ),Row(
-                            children: [
-                              Image.asset(
-                                'assets/14.png',
-                                scale: 8,
                               ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                               Column(
+                              Row(
                                 children: [
-                                  const Text(
-                                    'Temp Min',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w300,
-                                    ),
+                                  Image.asset(
+                                    'assets/14.png',
+                                    scale: 8,
                                   ),
                                   const SizedBox(
-                                    height: 3,
+                                    width: 5,
                                   ),
-                                  Text(
-                                     '${state.weather.tempMin!.celsius!.round()}°C',
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w700,
-                                    ),
+                                  Column(
+                                    children: [
+                                      const Text(
+                                        'Temp Min',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 3,
+                                      ),
+                                      Text(
+                                        '${state.weather.tempMin!.celsius!.round()}°C',
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
                             ],
                           ),
-                            ],
-                          ),
-                          
                         ],
                       ),
                     ),

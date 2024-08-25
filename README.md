@@ -18,7 +18,7 @@ Movie app made in Flutter with clean architecture using BLoC and the open weathe
 ## Installation
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/hammadxo2/weather_app.git
+git clone https://github.com/hammadx02/weather_app.git
 cd flutter-weather-app
 ```
 ### 2. Run pub get

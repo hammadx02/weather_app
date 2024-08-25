@@ -12,7 +12,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -22,17 +21,31 @@ class MyApp extends StatelessWidget {
     );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FutureBuilder(
+      home: FutureBuilder<Position>(
         future: _determinePosition(),
         builder: (context, snap) {
-          if (snap.hasData) {
+          if (snap.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snap.hasError) {
+            // Handle error when location services are unavailable
+            return Center(
+              child: Text(
+                'Error: ${snap.error}. Please enable location services and restart the app.',
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.red),
+              ),
+            );
+          } else if (snap.hasData) {
+            print('Position obtained: ${snap.data}');
             return BlocProvider(
-               create: (context) => WeatherBloc()..add(FetchWeather(snap.data  as Position)),
+              create: (context) =>
+                  WeatherBloc()..add(FetchWeather(snap.data!)),
               child: const HomeScreen(),
             );
           } else {
+            // Handle any unexpected case
             return const Center(
-              child: CircularProgressIndicator(),
+              child: Text('Unexpected error occurred.'),
             );
           }
         },
@@ -40,20 +53,12 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  /// Determine the current position of the device.
-  ///
-  /// When the location services are not enabled or permissions
-  /// are denied the `Future` will return an error.
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
 
-    // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
       return Future.error('Location services are disabled.');
     }
 
@@ -61,23 +66,15 @@ class MyApp extends StatelessWidget {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        // Permissions are denied, next time you could try
-        // requesting permissions again (this is also where
-        // Android's shouldShowRequestPermissionRationale
-        // returned true. According to Android guidelines
-        // your App should show an explanatory UI now.
         return Future.error('Location permissions are denied');
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
       return Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
     }
 
-    // When we reach here, permissions are granted and we can
-    // continue accessing the position of the device.
     return await Geolocator.getCurrentPosition();
   }
 }
