@@ -1,6 +1,5 @@
-
-# Movie App
-Movie app made in Flutter with clean architecture using BLoC and the open weather API.
+# Weather App
+Weather app made in Flutter with clean architecture using BLoC and the open weather API.
 
 ## Features
 - Current Location
