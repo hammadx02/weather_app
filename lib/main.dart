@@ -6,7 +6,7 @@ import 'package:weather_app/bloc/weather_bloc.dart';
 import 'package:weather_app/screens/home_screen.dart';
 
 void main() {
-  // runApp(const MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
