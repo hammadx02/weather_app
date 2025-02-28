@@ -6,7 +6,7 @@ import 'package:weather_app/bloc/weather_bloc.dart';
 import 'package:weather_app/screens/home_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  // runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -38,8 +38,7 @@ class MyApp extends StatelessWidget {
           } else if (snap.hasData) {
             print('Position obtained: ${snap.data}');
             return BlocProvider(
-              create: (context) =>
-                  WeatherBloc()..add(FetchWeather(snap.data!)),
+              create: (context) => WeatherBloc()..add(FetchWeather(snap.data!)),
               child: const HomeScreen(),
             );
           } else {
